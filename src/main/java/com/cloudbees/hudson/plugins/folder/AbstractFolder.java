@@ -245,7 +245,7 @@ public abstract class AbstractFolder<I extends TopLevelItem> extends AbstractIte
         if (folderViews == null) {
             if (views != null && !views.isEmpty()) {
                 if (primaryView != null) {
-                    primaryView = DefaultFolderViewHolder.migrateLegacyPrimaryAllViewLocalizedName(views, primaryView);
+                    primaryView = AllView.migrateLegacyPrimaryAllViewLocalizedName(views, primaryView);
                 }
                 folderViews = new DefaultFolderViewHolder(views, primaryView, viewsTabBar == null ? newDefaultViewsTabBar()
                         : viewsTabBar);
@@ -860,7 +860,7 @@ public abstract class AbstractFolder<I extends TopLevelItem> extends AbstractIte
         if (getView(view) == null) {
             return FormValidation.ok();
         } else {
-            return FormValidation.error(jenkins.model.Messages.Hudson_ViewAlreadyExists(view));
+            return FormValidation.error(Messages.AbstractFolder_viewAlreadyExists(view));
         }
     }
 
